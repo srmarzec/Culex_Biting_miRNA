@@ -9,7 +9,7 @@
 #-----------------------------------------------------------------------------#
 
 #- Go into Conda environment where mapper.pl is  --------------------------------#
-source /home/sm3679/.conda/envs
+
 source activate conda-env
 
 #- Set variables ----------------------------------------------------------------#
