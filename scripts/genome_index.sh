@@ -12,7 +12,7 @@ module load bowtie/1.3.1
 
 #- Set variables ----------------------------------------------------------------#
 
-ref_genome=/home/sm3679/culex_smallRNA/genome/GCF_015732765.1_VPISU_Cqui_1.0_pri_paternal_genomic.fa
+ref_genome=/home/sm3679/culex_smallRNA/genome/Culex_genome_noWhiteSpace.fa
 index_path_prefix=/home/sm3679/culex_smallRNA/genome/indexed/Cqu
 
 
