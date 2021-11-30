@@ -42,4 +42,5 @@ for seq_record in Bio.SeqIO.parse(seqfile,"fastq"):
 seqfile.close()
 out_handle.close()
 
+print(seqname)
 print(counter)
