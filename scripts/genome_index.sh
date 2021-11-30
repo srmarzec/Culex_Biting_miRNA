@@ -8,7 +8,7 @@
 # This script runs makes a genome index with bowtie #
 #-----------------------------------------------------------------------------#
 
-module load bowtie2/2.4.4
+module load bowtie/1.3.1
 
 #- Set variables ----------------------------------------------------------------#
 
@@ -18,10 +18,10 @@ index_path_prefix=/home/sm3679/culex_smallRNA/genome/indexed/Cqu
 
 #- RUN bowtie ----------------------------------------------------------------#
 
-bowtie2-build ${ref_genome} ${index_path_prefix}
+bowtie-build ${ref_genome} ${index_path_prefix}
 
 
 #- Unload module----------------#
-module unload bowtie2/2.4.4
+module unload bowtie/1.3.1
 
 #- FIN -----------------------------------------------------------------------#
