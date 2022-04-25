@@ -18,19 +18,23 @@ Preliminary trimming and fastqc showed a poor "per sequence base content" for th
 
 Most samples have warnings or fail for "per sequence GC content" and "sequence duplication levels", which I expect for RNAseq data. An interesting occurence, using the HEADCROP flag to remove the first 15 bases results in all samples failing "per sequence tile quality", while trimming without HEADCROP results only in a warning for this. This is likely because the samples are now being measured over 135b instead of 150b, which I guess makes this check fail for sequence tile quality.
 
-"Overrepresented sequences" all blast to Culex (and related mosquitoes) or else are too repetitive to map to any organism. All the overrepresented sequences from each sample can be found [here](https://github.com/srmarzec/Culex_Biting_RNAseq/blob/main/misc/OverrepSequences.txt), annotated with whether they could be blasted mapped and to what.
 
 #### Cleaning out other small RNAs
 
 Angela add here
+
+#### Size sorting
+
+We wanted to only keep reads that fell within 18 - 24 bases which is what we consider the size of miRNAs. This was done with a custom [python script](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/scripts/python_scripts/trimANDsizeSort.py) for all the files with this [script](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/scripts/sortSize_multi.sh)
 
 ### miRDeep2 
 #### Index with Bowtie
 
 Mapping was done using the *Culex quinquefasciatus* reference genome ([GCF_015732765.1](https://www.ncbi.nlm.nih.gov/assembly/GCF_015732765.1/)) found on NCBI
 
-
 #### Run miRDeep2 to count reads for each miRNA
+
+miRDeep2 was installed and run in a conda virtual environment which was created following this markdown
 
 
 ## Downstream
