@@ -32,14 +32,20 @@ We wanted to only keep reads that fell within 18 - 24 bases which is what we con
 
 Mapping was done using the *Culex quinquefasciatus* reference genome ([GCF_015732765.1](https://www.ncbi.nlm.nih.gov/assembly/GCF_015732765.1/)) found on NCBI
 
+The genome was indexed for miRDeep2 using Bowtie (v1.3.1) with this [script](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/scripts/genome_index.sh). Note, for miRDeep2 to run properly, there can be no whitespace in the headers of the reference genome fasta so I had to remove/replace the whitespaces before indexing.
+
 #### Run miRDeep2 to count reads for each miRNA
 
-miRDeep2 was installed and run in a conda virtual environment which was created following this markdown
+miRDeep2 (miRDeep2.0.1.3) was installed and run in a conda virtual environment which was created following this [markdown](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/misc/Conda_VirtualEnvironment.md).
+
+miRDeep2 was [run](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/scripts/miRDeep2.sh) and we found no novel miRNAs. We had a more extensive starting list because of a recent publication. 
+
+We then mapped reads to the known miRNAs with this [script](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/scripts/miRDeep_mapper.sh). This produced a count matrix we used for downstream analysis. 
 
 
 ## Downstream
 
-All downstream analysis done in R using R version 4.0.2
+All downstream analysis done in R using R version **4.0.2**
 
 ### DESeq
 Using DESeq2 (v1.30.1) ([script](https://github.com/srmarzec/Culex_Biting_RNAseq/blob/main/Downstream/DESeq.R))
