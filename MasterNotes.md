@@ -24,7 +24,6 @@ Most samples have warnings or fail for "per sequence GC content" and "sequence d
 
 #### Cleaning out other small RNAs
 
-Angela add here
 Refer to https://github.com/AngelaZhou779/RISE/blob/main/Notes.md
 
 #### Size sorting
@@ -46,7 +45,6 @@ miRDeep2 was [run](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/scri
 
 We then mapped reads to the known miRNAs with this [script](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/scripts/miRDeep_mapper.sh). This produced a count matrix we used for downstream analysis. 
 
-
 ## Downstream
 
 All downstream analysis done in R using R version **4.0.2**
@@ -56,8 +54,10 @@ Using DESeq2 (v1.30.1) ([script](https://github.com/srmarzec/Culex_Biting_RNAseq
 or 
 https://github.com/AngelaZhou779/RISE/blob/main/script/DESeqmiRNA.R
 
-### Target Predicition 
+## Biological Function
+Refer to https://github.com/AngelaZhou779/RISE/blob/main/Notes.md
 
+### Target Predicition 
 
 No significant GO term enrichment or KEGG pathway enrichment based on the few consenesus genes that were found between both target prediction software. 
 
