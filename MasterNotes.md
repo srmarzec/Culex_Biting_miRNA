@@ -59,6 +59,8 @@ Refer to https://github.com/AngelaZhou779/RISE/blob/main/Notes.md
 
 ### Target Predicition 
 
+Both miRanda (v3.3a, Parameters: Gap Open Penalty: -9.000000, Gap Extend Penalty: -4.000000, Score Threshold: 140.000000, Energy Threshold: -20.000000 kcal/mol, Scaling Parameter: 4.000000: Enright et al., 2003) and RNAhybrid (v, Parameters: binding required in miRNA positions 2–7, p-value < 0.1, maximum target sequence length 100000, energy cutoff −20;  Krüger & Rehmsmeier, 2006) were used to predict traget genes for the DE miRNAs. A more detailed description of the workflow can be found [here](https://github.com/srmarzec/Culex_Biting_miRNA/blob/main/misc/TargetPrediction.md).
+
 No significant GO term enrichment or KEGG pathway enrichment based on the few consenesus genes that were found between both target prediction software. 
 
 ### Obtaining CpipJ IDs from past assembly for gene IDs of the newest assembly
