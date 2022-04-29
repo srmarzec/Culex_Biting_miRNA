@@ -22,6 +22,7 @@ Most samples have warnings or fail for "per sequence GC content" and "sequence d
 #### Cleaning out other small RNAs
 
 Angela add here
+Refer to https://github.com/AngelaZhou779/RISE/blob/main/Notes.md
 
 #### Size sorting
 
