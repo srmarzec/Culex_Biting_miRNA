@@ -14,9 +14,12 @@ Trimmomatic (version 0.39) was used to trim sequence reads based on quality ([sc
 
 FastQC (v0.11.9) was used for quality control visualization ([script](https://github.com/srmarzec/Culex_Biting_RNAseq/blob/main/Upstream/fastqc.sh))
 
+
 Preliminary trimming and fastqc showed a poor "per sequence base content" for the first ~15 bases. We decided to use HEADCROP flag to remove the first 15 bases. All other flags (TRAILING, SLIDINGWINDOW, and MINLEN) are rather general/default for basic quality of bases and did not result in much difference of trimming.
 
 Most samples have warnings or fail for "per sequence GC content" and "sequence duplication levels", which I expect for RNAseq data. An interesting occurence, using the HEADCROP flag to remove the first 15 bases results in all samples failing "per sequence tile quality", while trimming without HEADCROP results only in a warning for this. This is likely because the samples are now being measured over 135b instead of 150b, which I guess makes this check fail for sequence tile quality.
+
+*not sure about this ask in meeting, because the script I have in my notes have different settings? Can be found in my notes: https://github.com/AngelaZhou779/RISE/blob/main/Notes.md and also here: https://github.com/AngelaZhou779/RISE/blob/main/script/Trimmomatic.sh
 
 
 #### Cleaning out other small RNAs
@@ -50,6 +53,8 @@ All downstream analysis done in R using R version **4.0.2**
 
 ### DESeq
 Using DESeq2 (v1.30.1) ([script](https://github.com/srmarzec/Culex_Biting_RNAseq/blob/main/Downstream/DESeq.R))
+or 
+https://github.com/AngelaZhou779/RISE/blob/main/script/DESeqmiRNA.R
 
 ### Target Predicition 
 
