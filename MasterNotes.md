@@ -1,3 +1,5 @@
+# Background: M-pipiens molestus, don’t bite P-pipiens pipiens, bite Found differences when Sarah did RNAseq- on mRNA (with polyAAA tail) Now we are looking at files of size selected small RNAs- pi RNAs, miRNAs, etc, but data was from same individuals/RNA samples
+
 # Workflow details for the Culex biting miRNA analysis
 
 ## Upstream 
@@ -10,21 +12,37 @@ The raw reads are available in NCBI’s short read archive (SRA) under accession
 
 ### Preprocessing and Quality Control
 
-Trimmomatic (version 0.39) was used to trim sequence reads based on quality ([script](https://github.com/srmarzec/Culex_Biting_RNAseq/blob/main/Upstream/trim.sh))
+We downloaded and worked with the following data files:
+
+$ gsutil ls gs://gu-biology-pi-paa9/culexBiting_smallRNA/rawData
+
+M1_S4_L001_R1_001.fastq.gz
+M2_S5_L001_R1_001.fastq.gz
+M4_S6_L001_R1_001.fastq.gz
+P1_S1_L001_R1_001.fastq.gz
+P2_S2_L001_R1_001.fastq.gz
+P3_S3_L001_R1_001.fastq.gz
+
+Trimmomatic (version 0.39) was used to trim sequence reads based on quality ([script](https://github.com/AngelaZhou779/RISE/blob/main/script/Trimmomatic.sh))
 
 FastQC (v0.11.9) was used for quality control visualization ([script](https://github.com/srmarzec/Culex_Biting_RNAseq/blob/main/Upstream/fastqc.sh))
 
+Preliminary trimming and fastqc showed a poor "per sequence base content" for the first few bases. Therefore, we used headcrop four in the begginning, but there is no command to crop the four at the end which could be any base pairs. Note that SE settings were used. 
 
-Preliminary trimming and fastqc showed a poor "per sequence base content" for the first ~15 bases. We decided to use HEADCROP flag to remove the first 15 bases. All other flags (TRAILING, SLIDINGWINDOW, and MINLEN) are rather general/default for basic quality of bases and did not result in much difference of trimming.
+In addition, we removed the adapter sequences for the Illumina small RNA 3' adapter, which can be found [here]. (https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/smalladaptercontent.md)
 
-Most samples have warnings or fail for "per sequence GC content" and "sequence duplication levels", which I expect for RNAseq data. An interesting occurence, using the HEADCROP flag to remove the first 15 bases results in all samples failing "per sequence tile quality", while trimming without HEADCROP results only in a warning for this. This is likely because the samples are now being measured over 135b instead of 150b, which I guess makes this check fail for sequence tile quality.
+These sequences were obtained after contacting those that did the illlumina sequencing and asking for the exact adapter sequences used. 
 
-*not sure about this ask in meeting, because the script I have in my notes have different settings? Can be found in my notes: https://github.com/AngelaZhou779/RISE/blob/main/Notes.md and also here: https://github.com/AngelaZhou779/RISE/blob/main/script/Trimmomatic.sh
-
+From the fastqc files, you can see that the per base sequences quality improved and the adapter content was removed. Around 80% of the reads are left after cleaning, although there are still red flags for the following: [FAIL]Per base sequence content [FAIL]Per sequence GC content [WARNING]Sequence Length Distribution [FAIL]Sequence Duplication Levels [FAIL] Overrepresented sequences. It is under a general consensus, however, that these flags will not significantly affect our analysis and that there might be a biological reason behind them.
 
 #### Cleaning out other small RNAs
+Aim: to remove tRNA and other contaminates.
 
-Refer to https://github.com/AngelaZhou779/RISE/blob/main/Notes.md including for summary stats table of % reads retained etc.
+We removed tRNA and rRNA sequences that we obtained from NCBI Culex quinquefasciatus mitochondrion, complete genome. The full link can be found [here](https://www.ncbi.nlm.nih.gov/nucleotide/NC_014574.1)
+
+To do so, we put all of our tRNA and rRNA sequences into a "contaminants" file and then made an index using bowtie2.
+
+We were able to get 6 output files with all the sequences that did NOT align with our contanminants file i.e. files with sequences that were not tRNAs or rRNAs (presumably mostly miRNAs are left).
 
 #### Size sorting
 
