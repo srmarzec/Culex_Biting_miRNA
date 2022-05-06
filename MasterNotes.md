@@ -1,4 +1,5 @@
-### Background: M-pipiens molestus, don’t bite P-pipiens pipiens, bite Found differences when Sarah did RNAseq- on mRNA (with polyAAA tail) Now we are looking at files of size selected small RNAs- pi RNAs, miRNAs, etc, but data was from same individuals/RNA samples
+### Background: 
+M-pipiens molestus, don’t bite P-pipiens pipiens, bite Found differences when Sarah did RNAseq- on mRNA (with polyAAA tail) Now we are looking at files of size selected small RNAs- pi RNAs, miRNAs, etc, but data was from same individuals/RNA samples
 
 # Workflow details for the Culex biting miRNA analysis
 
