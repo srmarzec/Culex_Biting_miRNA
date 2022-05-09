@@ -41,8 +41,8 @@ Aim: to remove tRNA and other contaminates.
 
 We removed tRNA and rRNA sequences that we obtained from NCBI Culex quinquefasciatus mitochondrion, complete genome. The full link can be found [here)(https://www.ncbi.nlm.nih.gov/nucleotide/NC_014574.1)
 
-To do so, we put all of our tRNA and rRNA sequences into a "contaminants" file and then made an index using bowtie2:
-$bowtie2-build culex_quinq_tRNArRNA.fa contam_align
+To do so, we put all of our tRNA and rRNA sequences into a "contaminants" file and then made an index using bowtie2/2.4.4:
+$ bowtie2-build culex_quinq_tRNArRNA.fa contam_align
 
 To run alignment and put non-aligned reads into filtered fasta, we ran the following [script](https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/bowtie2slurmscriptM1.SBATCH).
 
@@ -69,7 +69,7 @@ We then mapped reads to the known miRNAs with this [script](https://github.com/s
 
 ## Downstream
 
-All downstream analysis done in R using R version **4.0.2**
+All downstream analysis done in R using RStudio version **1.4.1106**
 
 ### DESeq
 Using DESeq2 (v1.30.1) ([script](https://github.com/AngelaZhou779/RISE/blob/main/script/DESeqmiRNA.R)
