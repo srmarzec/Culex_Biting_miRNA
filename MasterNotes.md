@@ -44,7 +44,7 @@ We removed tRNA and rRNA sequences that we obtained from NCBI Culex quinquefasci
 To do so, we put all of our tRNA and rRNA sequences into a "contaminants" file and then made an index using bowtie2/2.4.4:
 $ bowtie2-build culex_quinq_tRNArRNA.fa contam_align
 
-To run alignment and put non-aligned reads into filtered fasta, we ran the following [script](https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/bowtie2slurmscriptM1.SBATCH).
+Ran alignment and put non-aligned reads into filtered fasta files using this [script](https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/bowtie2slurmscriptM1.SBATCH).
 
 We were able to get 6 output files with all the sequences that did NOT align with our contanminants file i.e. files with sequences that were not tRNAs or rRNAs (presumably mostly miRNAs are left).
 
@@ -72,7 +72,7 @@ We then mapped reads to the known miRNAs with this [script](https://github.com/s
 All downstream analysis done in R using RStudio version **1.4.1106**
 
 ### DESeq
-Using DESeq2 (v1.30.1) ([script](https://github.com/AngelaZhou779/RISE/blob/main/script/DESeqmiRNA.R)
+Using DESeq2 (v1.30.1) ([script](https://github.com/AngelaZhou779/RISE/blob/main/script/DESeqmiRNA.R))
 
 As a result of performing differential expression analysis on our 90 miRNAs, we obtained 8 differentially abundant miRNAs:
 [Volcano plot](https://user-images.githubusercontent.com/78465068/156470750-19dfb1c7-f96d-4605-9d33-5d2092fc29d1.png)
