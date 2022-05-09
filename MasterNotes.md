@@ -26,11 +26,11 @@ P3_S3_L001_R1_001.fastq.gz
 
 Trimmomatic (version 0.39) was used to trim sequence reads based on quality ([script](https://github.com/AngelaZhou779/RISE/blob/main/script/Trimmomatic.sh))
 
-FastQC (v0.11.9) was used for quality control visualization ([script](https://github.com/srmarzec/Culex_Biting_RNAseq/blob/main/Upstream/fastqc.sh))
+FastQC (v0.11.9) was used for quality control visualization ([script](https://github.com/AngelaZhou779/RISE/blob/main/script/FastQC.sh))
 
 Preliminary trimming and fastqc showed a poor "per sequence base content" for the first few bases. Therefore, we used headcrop four in the begginning, but there is no command to crop the four at the end which could be any base pairs. Note that SE settings were used. 
 
-In addition, we removed the adapter sequences for the Illumina small RNA 3' adapter, which can be found [here]. (https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/smalladaptercontent.md)
+In addition, we removed the adapter sequences for the Illumina small RNA 3' adapter, which can be found [here] (https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/smalladaptercontent.md).
 
 These sequences were obtained after contacting those that did the illlumina sequencing and asking for the exact adapter sequences used. 
 
@@ -39,9 +39,12 @@ From the fastqc files, you can see that the per base sequences quality improved 
 #### Cleaning out other small RNAs
 Aim: to remove tRNA and other contaminates.
 
-We removed tRNA and rRNA sequences that we obtained from NCBI Culex quinquefasciatus mitochondrion, complete genome. The full link can be found [here](https://www.ncbi.nlm.nih.gov/nucleotide/NC_014574.1)
+We removed tRNA and rRNA sequences that we obtained from NCBI Culex quinquefasciatus mitochondrion, complete genome. The full link can be found [here)(https://www.ncbi.nlm.nih.gov/nucleotide/NC_014574.1)
 
-To do so, we put all of our tRNA and rRNA sequences into a "contaminants" file and then made an index using bowtie2.
+To do so, we put all of our tRNA and rRNA sequences into a "contaminants" file and then made an index using bowtie2:
+$bowtie2-build culex_quinq_tRNArRNA.fa contam_align
+
+To run alignment and put non-aligned reads into filtered fasta, we ran the following [script](https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/bowtie2slurmscriptM1.SBATCH).
 
 We were able to get 6 output files with all the sequences that did NOT align with our contanminants file i.e. files with sequences that were not tRNAs or rRNAs (presumably mostly miRNAs are left).
 
@@ -82,7 +85,7 @@ We found an important supplementary table from Xu et. al. that listed all of the
 
 [miRNAs highlighted Table_S1_Development of miRNA-Based Approaches to Explore the Interruption of Mosquito-Borne Disease Transmission.docx](https://github.com/AngelaZhou779/RISE/files/8174654/miRNAs.highlighted.Table_S1_Development.of.miRNA-Based.Approaches.to.Explore.the.Interruption.of.Mosquito-Borne.Disease.Transmission.docx)
 
-The table with the signifcant miRNAs and notes from Xu. et al. are here:
+Here is the table with the signifcant miRNAs and notes from Xu. et al.:
 [miRNA notes.xlsx](https://github.com/AngelaZhou779/RISE/files/8174752/miRNA.notes.xlsx)
 
 Link to Angela's lab presentation with results and discussing the results: 
