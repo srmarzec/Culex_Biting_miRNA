@@ -30,7 +30,7 @@ FastQC (v0.11.9) was used for quality control visualization ([script](https://gi
 
 Preliminary trimming and fastqc showed a poor "per sequence base content" for the first few bases. Therefore, we used headcrop four in the begginning, but there is no command to crop the four at the end which could be any base pairs. Note that SE settings were used. 
 
-In addition, we removed the adapter sequences for the Illumina small RNA 3' adapter, which can be found [here] (https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/smalladaptercontent.md).
+In addition, we removed the adapter sequences for the Illumina small RNA 3' adapter, which can be found [here](https://github.com/AngelaZhou779/RISE/blob/main/miscellaneous/smalladaptercontent.md).
 
 These sequences were obtained after contacting those that did the illlumina sequencing and asking for the exact adapter sequences used. 
 
