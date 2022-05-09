@@ -39,7 +39,7 @@ From the fastqc files, you can see that the per base sequences quality improved 
 #### Cleaning out other small RNAs
 Aim: to remove tRNA and other contaminates.
 
-We removed tRNA and rRNA sequences that we obtained from NCBI Culex quinquefasciatus mitochondrion, complete genome. The full link can be found [here)(https://www.ncbi.nlm.nih.gov/nucleotide/NC_014574.1)
+We removed tRNA and rRNA sequences that we obtained from NCBI Culex quinquefasciatus mitochondrion, complete genome. The full link can be found [here](https://www.ncbi.nlm.nih.gov/nucleotide/NC_014574.1).
 
 To do so, we put all of our tRNA and rRNA sequences into a "contaminants" file and then made an index using bowtie2/2.4.4:
 $ bowtie2-build culex_quinq_tRNArRNA.fa contam_align
